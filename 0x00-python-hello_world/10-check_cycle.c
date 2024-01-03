@@ -35,6 +35,7 @@ int check_cycle(listint_t *list)
 		return (-1);
 	current = list;
 	tmp = list;
+	current = current->next;
 	while (current != NULL)
 	{
 		current = current->next;
