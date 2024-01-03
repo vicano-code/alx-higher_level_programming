@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-for num in range(100):
-    if num < 89:
-        print(f"{num:02}", end = ', ')
-    else:
-        print(f"{num}")
+for tens_digit in range(10):
+    for ones_digit in range(tens_digit + 1, 10):
+        print(f"{tens_digit}{ones_digit}", end=", " if tens_digit < 9 or ones_digit < 9 else "\n")
+
