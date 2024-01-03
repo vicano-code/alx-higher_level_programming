@@ -5,4 +5,3 @@ for tens_digit in range(10):
             print("{}{}".format(tens_digit, ones_digit), end=", ")
         else:
             print("\n")
-
