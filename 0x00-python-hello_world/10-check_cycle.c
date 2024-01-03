@@ -32,10 +32,9 @@ int check_cycle(listint_t *list)
 	const listint_t *current, *tmp;
 
 	if (list == NULL)
-		return (-1);
+		return (0);
 	current = list;
 	tmp = list;
-	current = current->next;
 	while (current != NULL)
 	{
 		current = current->next;
