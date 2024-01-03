@@ -8,18 +8,19 @@
 
 int check_cycle(listint_t *list)
 {
-	const listint_t *current, *tmp;
+	const listint_t *ahead, *behind;
 
 	if (list == NULL)
 		return (0);
-	current = list;
-	tmp = list;
+	ahead = list;
+	behind = list;
 	while (1)
 	{
-		if (current->next != NULL)
+		if (ahead->next != NULL && ahead->next->next != NULL)
 		{
-			current = current->next;
-			if (current == tmp)
+			ahead = ahead->next->next;
+			behind = behind->next;
+			if (ahead == behind)
 				return (1);
 		}
 		else
