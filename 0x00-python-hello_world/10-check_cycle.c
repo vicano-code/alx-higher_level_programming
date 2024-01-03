@@ -29,15 +29,12 @@ size_t listint_len(const listint_t *h)
 
 int check_cycle(listint_t *list)
 {
-	/*unsigned int i;*/
 	const listint_t *current, *tmp;
 
 	if (list == NULL)
 		return (-1);
-	/*n = listint_len(list);*/
 	current = list;
 	tmp = list;
-	/*i = 0;*/
 	while (current != NULL)
 	{
 		current = current->next;
