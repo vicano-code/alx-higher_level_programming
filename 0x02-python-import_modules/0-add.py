@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import add_0 as ad
+if __name__ == "__main__":
+    import add_0 as ad
 
-a = 1
-b = 2
-result = ad.add(a, b)
-print("{} + {} = {}".format(a, b, result))
+    a = 1
+    b = 2
+    print("{} + {} = {}".format(a, b, ad.add(a, b)))
