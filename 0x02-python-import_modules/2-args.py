@@ -9,6 +9,6 @@ if __name__ == "__main__":
         s = "argument:"
     else:
         s = "arguments:"
-    print("{} {}".format(num_args, s))
+    print("{:d} {:s}".format(num_args, s))
     for i in range(1, num_args + 1):
-        print("{}: {}".format(i, argv[i]))
+        print("{:d}: {:s}".format(i, argv[i]))
