@@ -5,5 +5,5 @@ if __name__ == "__main__":
     num_args = len(sys.argv)
     if (num_args > 1):
         for i in range(1, num_args):
-            r += int(sys.argv[i])
-        print(f"{r}")
+            r += (int(sys.argv[i]))
+        print("{:d}".format(r))
