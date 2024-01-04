@@ -6,4 +6,4 @@ if __name__ == "__main__":
     if (num_args > 1):
         for i in range(1, num_args):
             r += (int(sys.argv[i]))
-        print("{}".format(r))
+    print("{}".format(r))
