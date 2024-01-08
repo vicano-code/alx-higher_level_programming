@@ -5,7 +5,7 @@ def add_tuple(tuple_a=(), tuple_b=()):
     size_a = len(tuple_a)
     size_b = len(tuple_b)
     if size_a == 0 and size_b == 0:
-        return ()
+        return (0, 0)
     if size_a == 0:
         return tuple_b
     if size_b == 0:
