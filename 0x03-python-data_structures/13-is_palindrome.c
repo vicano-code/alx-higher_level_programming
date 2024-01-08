@@ -11,7 +11,7 @@ int is_palindrome(listint_t **head)
 	int i, a;
 	listint_t *current;
 
-	if (head == NULL)
+	if (head == NULL)/*no list*/
 		return (0);
 	if (*head == NULL)/*empty list*/
 		return (1);
@@ -26,9 +26,9 @@ int is_palindrome(listint_t **head)
 		arr[i] = current->n;
 	}
 	a = 0;
-	if (i == 1)
+	if (i == 1)/*single node list*/
 		return (1);
-	while (a <= i)
+	while (a <= i) /*save node values into array & check palindrome*/
 	{
 		if (arr[a] != arr[i])
 			return (0);
