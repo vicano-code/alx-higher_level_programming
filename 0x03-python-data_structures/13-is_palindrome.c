@@ -7,7 +7,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int arr[1024];
+	int arr[10240];
 	int i, a;
 	listint_t *current;
 
