@@ -11,8 +11,6 @@ int is_palindrome(listint_t **head)
 	int i, a;
 	listint_t *current;
 
-	if (head == NULL)/*No list*/
-		return (0);
 	if (*head == NULL)/*empty list*/
 		return (1);
 	if (*head != NULL && *head->next == NULL)/*single node list*/
