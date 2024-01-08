@@ -26,6 +26,8 @@ int is_palindrome(listint_t **head)
 		arr[i] = current->n;
 	}
 	a = 0;
+	if (i == 1)
+		return (1);
 	while (a <= i)
 	{
 		if (arr[a] != arr[i])
