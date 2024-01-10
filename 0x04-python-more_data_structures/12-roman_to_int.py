@@ -12,6 +12,8 @@ def roman_to_int(roman_string):
     size = len(roman_string)
     for i in range(size):
         if i < (size - 1):
+            if roman_string[i] not in roman_dict.keys():
+                return 0
             if roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]:
                 roman_dict[roman_string[i]] = -(roman_dict[roman_string[i]])
         numeral += roman_dict[roman_string[i]]
