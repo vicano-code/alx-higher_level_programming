@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 """
 Module 102-square
