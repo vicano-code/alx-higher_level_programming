@@ -50,6 +50,8 @@ class Node:
         """
         if type(value) is not Node and value is not None:
             raise TypeError("next_node must be a Node object")
+        else:
+            self.__next_node = value
 
 
 class SinglyLinkedList:
@@ -87,7 +89,7 @@ class SinglyLinkedList:
 
         current = self.__head
         if new.data < current.data:
-            new.next_node = current
+            new.next_node = self.__head
             self.__head = new
             return
 
@@ -96,3 +98,4 @@ class SinglyLinkedList:
             current = current.next_node
         new.next_node = current.next_node
         current.next_node = new
+        return
