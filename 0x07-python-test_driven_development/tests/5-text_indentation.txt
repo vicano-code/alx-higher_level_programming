@@ -1,0 +1,48 @@
+Import the method to test
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+SUCCESS TESTS:
+
+>>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere.""")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+Teneo, inquit, finem illi videri nihil dolere.
+<BLANKLINE>
+
+-----space at start and end of text-----
+>>> text_indentation(""" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? """)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+
+-----No text-----
+>>> text_indentation("""""")
+
+-----Extra spaces------
+>>> text_indentation("""  And    why?      del, now.   """)
+And    why?
+<BLANKLINE>
+del, now.
+<BLANKLINE>
+
+
+FAILURE TESTS:
+
+-----text not a string-----
+>>> text_indentation([1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: text must be a string

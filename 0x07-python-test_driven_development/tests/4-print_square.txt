@@ -1,0 +1,36 @@
+Import the method to test
+>>> print_square = __import__('4-print_square').print_square
+
+SUCCESS TESTS:
+
+>>> print_square(4)
+####
+####
+####
+####
+
+-----size is zero-----
+>>> print_square(0)
+<BLANKLINE>
+
+
+FAIL TESTS:
+
+-----size not an integer-----
+>>> print_square("egg")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+-----size less than zero-----
+>>> print_square(-10)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+-----size is float and less than zero------
+>>> print_square(-2.5)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+

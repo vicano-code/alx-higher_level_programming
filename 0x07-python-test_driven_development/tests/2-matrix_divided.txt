@@ -1,0 +1,55 @@
+First import the method to test
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+SUCCESS CASES:
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> print(matrix_divided([[2, 4], [4, 8]], 2))
+[[1.0, 2.0], [2.0, 4.0]]
+
+>>> print(matrix_divided([[1, 10], [100, 10]], 0.1))
+[[10.0, 100.0], [1000.0, 100.0]]
+
+>>> print(matrix_divided([[2, 4], [4, -8]], -2))
+[[-1.0, -2.0], [-2.0, 4.0]]
+
+>>> print(matrix_divided([[1], [2], [3], [4]], -1))
+[[-1.0], [-2.0], [-3.0], [-4.0]]
+
+>>> print(matrix_divided([[True], [False]], True))
+[[1.0], [0.0]]
+
+
+FAIL CASES:
+
+----matrix division by zero----
+>>> print(matrix_divided([[2, 4], [4, 8]], 0))
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+----matrix division by types other than int/float----
+>>> print(matrix_divided([[2, 4], [4, 8]], "k"))
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+----matrix rows of different sizes----
+>>> print(matrix_divided([[2, 4], [4, 8, 3]], 2))
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+----matrix not a list of lists----
+>>> print(matrix_divided([(2, 4), (4, 8)], 2))
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+----matrix elements of different types
+print(matrix_divided([[s, 4], [4, p]], 2))
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats

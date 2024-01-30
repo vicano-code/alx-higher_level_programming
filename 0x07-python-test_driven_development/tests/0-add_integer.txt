@@ -1,0 +1,45 @@
+First import the method to test
+>>> add_integer = __import__('0-add_integer').add_integer
+
+SUCCESS CASES:
+
+----Testing signed and unsigned ints and floats----
+>>> add_integer(1, 2)
+3
+>>> add_integer(-4, 3)
+-1
+>>> add_integer(-4, -6)
+-10
+>>> add_integer(20.45, 8)
+28
+>>> add_integer(100.2, 100.5)
+200
+
+FAIL CASES:
+
+----Other Data Types----
+>>> add_integer("a", 3)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(3.2, [1, 2])
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+----No arguments----
+>>> add_integer(None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(None, None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+----More than 2 arguments----
+>>> add_integer(1, 1, 2)
+Traceback (most recent call last):
+...
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
