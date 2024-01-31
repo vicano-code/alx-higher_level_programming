@@ -7,6 +7,8 @@ A program that solves the N queens problem.
 N non-attacking queens on an N×N chessboard.
 NOTE: This program is limited to values of N = 4 or 6
 """
+
+
 import sys
 
 
@@ -48,6 +50,6 @@ class Nqueens:
             if len(my_list) == N:
                 print("{}".format(my_list))
 
-# call function
+
 k = Nqueens()
 k.nqueens_sol()
