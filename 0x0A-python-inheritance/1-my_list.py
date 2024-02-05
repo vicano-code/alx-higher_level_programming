@@ -11,10 +11,8 @@ prints the list, but sorted (ascending sort)
 
 class MyList(list):
     """
-    A class that inherits from list
+    A class that inherits from in-built list class
     """
-    def __init__(self):
-        pass
 
     def print_sorted(self):
         print(sorted(self))
