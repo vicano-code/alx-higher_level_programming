@@ -9,9 +9,22 @@ import module MyList
 >>> my_list.append(5)
 >>> print(my_list)
 [1, 4, 2, 3, 5]
-
 >>> my_list.print_sorted()
 [1, 2, 3, 4, 5]
-
 >>> print(my_list)
 [1, 4, 2, 3, 5]
+
+>>> single_val_list = MyList()
+>>> single_val_list.append(2000)
+>>> print(single_val_list)
+[2000]
+>>> single_val_list.print_sorted()
+[2000]
+>>> print(single_val_list)
+[2000]
+
+>>> empty = MyList()
+>>> print(empty)
+[]
+>>> empty.print_sorted()
+[]
