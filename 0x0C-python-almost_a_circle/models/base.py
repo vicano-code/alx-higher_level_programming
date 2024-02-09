@@ -55,3 +55,13 @@ class Base:
                 my_json_str.append(cls.to_dictionary(obj))
         with open(filename, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(my_json_str))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        if cls.__name__ == "Square":
+            dummy = cls(1)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 2)
+        dummy.update(**dictionary)
+        return dummy
