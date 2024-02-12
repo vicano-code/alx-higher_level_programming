@@ -73,7 +73,7 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
-        
+
     @property
     def height(self):
         """get rectangle height"""
@@ -122,8 +122,8 @@ class Rectangle(Base):
 
     def display(self):
         """print rectangle representation to stdout"""
-        print("\n" * self.__y + "\n".join([((" " * self.__x) + ("#" * self.__width))
-              for rows in range(self.__height)]))
+        print("\n" * self.__y + "\n".join([((" " * self.__x) +
+              ("#" * self.__width)) for rows in range(self.__height)]))
 
     def __str__(self):
         """override the in-built str method"""
@@ -166,4 +166,3 @@ class Rectangle(Base):
         dic["x"] = self.__x
         dic["y"] = self.__y
         return dic
-
