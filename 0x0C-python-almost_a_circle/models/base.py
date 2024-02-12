@@ -65,3 +65,48 @@ class Base:
             dummy = cls(1, 2)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, mode="r", encoding="utf-8") as f:
+                file_content = f.read()
+        except FileNotFoundError:
+            return []
+
+        json_list = cls.from_json_string(file_content)
+        list_of_instances = []
+        for my_dict in json_list:
+            list_of_instances.append(cls.create(**my_dict))
+        return list_of_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ serializes in CSV"""
+        filename = cls.__name__ + ".csv"
+        if list_objs is None:
+            my_json_str = []
+        else:
+            my_json_str = []
+            for obj in list_objs:
+                my_json_str.append(cls.to_dictionary(obj))
+        with open(filename, mode="w", encoding="utf-8") as f:
+            f.write(cls.to_json_string(my_json_str))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """deserializes in CSV"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, mode="r", encoding="utf-8") as f:
+                file_content = f.read()
+        except FileNotFoundError:
+            return []
+
+        json_list = cls.from_json_string(file_content)
+        list_of_instances = []
+        for my_dict in json_list:
+            list_of_instances.append(cls.create(**my_dict))
+        return list_of_instances
