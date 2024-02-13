@@ -15,8 +15,10 @@ from io import StringIO
 from contextlib import redirect_stdout
 from models import base
 from models import rectangle
+from models import square
 Base = base.Base
 Rectangle = rectangle.Rectangle
+Square = square.Square
 
 
 class TestBase(unittest.TestCase):
@@ -89,19 +91,26 @@ class TestBase(unittest.TestCase):
                     json.dumps([r1.to_dictionary(), r2.to_dictionary()]),
                     file.read())
 
-    def test_save_to_file_with_no_instance(self):
-        """save_to_file method test given no instance list"""
-        r = None
-        Rectangle.save_to_file(r)
+        Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             self.assertTrue(file.read(), "[]")
 
-    def test_save_to_file_with_empty_instance(self):
-        """save_to_file method test given the arg is None"""
-        r = []
-        Rectangle.save_to_file(r)
+        Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertTrue(file.read(), "[]")
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertTrue(file.read(), "[]")
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertTrue(file.read(), "[]")
+
+        Square.save_to_file([Square(1)])
+        with open("Square.json", "r") as file:
+            result = "[{'id': 1, 'width': 1, 'height': 1, 'x': 0, 'y': 0}]"
+            self.assertTrue(file.read(), result)
 
     def test_from_json_string(self):
         """from_json_string method test"""
@@ -140,8 +149,17 @@ class TestBase(unittest.TestCase):
         self.assertFalse(r1 == r2)
         self.assertIsNot(r1, r2)
 
+        s = Square.create(**{'id': 89, 'size': 1})
+        self.assertEqual(str(s), '[Square] (89) 0/0 - 1')
+
+        s1 = Square.create(**{'id': 89, 'size': 1, 'x': 2})
+        self.assertEqual(str(s1), '[Square] (89) 2/0 - 1')
+
+        s1 = Square.create(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
+        self.assertEqual(str(s1), '[Square] (89) 2/3 - 1')
+
     def test_load_from_file(self):
-        """test the load_from_file method"""
+        """test the load_from_file method for Rectangle class"""
         r3 = Rectangle(10, 7, 2, 8, 11)
         r4 = Rectangle(2, 4, 0, 0, 12)
         list_rectangles_input = [r3, r4]
@@ -154,16 +172,32 @@ class TestBase(unittest.TestCase):
             if i == 1:
                 self.assertEqual(str(v), '[Rectangle] (12) 0/0 - 2/4')
 
-    def test_load_from_none_file(self):
-        """Test load from None file (file doe not exist"""
+        """test the load_from_file method for Rectangle class"""
+        Square.save_to_file([Square(2, 1, 3, 99)])
+        sq = Square.load_from_file()
+        self.assertEqual(len(sq), 1)
+        self.assertEqual(str(sq[0]), '[Square] (99) 1/3 - 2')
+
+        """Test load_from_file when file doesn't exist for Rectangle class"""
         Rectangle.save_to_file(None)
         rec = Rectangle.load_from_file()
         self.assertEqual(type(rec), list)
         self.assertEqual(len(rec), 0)
 
-    def test_load_from_empty_file(self):
-        """Test load from empty file"""
+        """Test load_from_file(empty file) for Rectangle class"""
         Rectangle.save_to_file([])
         rec = Rectangle.load_from_file()
         self.assertEqual(type(rec), list)
         self.assertEqual(len(rec), 0)
+
+        """Test load_from_file when file doesn't exist for Square class"""
+        Square.save_to_file(None)
+        sq = Square.load_from_file()
+        self.assertEqual(type(sq), list)
+        self.assertEqual(len(sq), 0)
+
+        """Test load_from_file(empty file) for Square class"""
+        Square.save_to_file([])
+        sq = Square.load_from_file()
+        self.assertEqual(type(sq), list)
+        self.assertEqual(len(sq), 0)
