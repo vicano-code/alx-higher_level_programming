@@ -52,9 +52,8 @@ class TestSquare(unittest.TestCase):
             Square({"s", 2})
 
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            Square(0)
-            Square(-1)
-            Square(-2, 1, 1)
+            Square(0, 1, 2, 88)
+            Square(-1, 0, 0, 89 )
 
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Square(2, "s", 1)

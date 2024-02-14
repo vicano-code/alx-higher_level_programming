@@ -91,13 +91,18 @@ class TestBase(unittest.TestCase):
                     json.dumps([r1.to_dictionary(), r2.to_dictionary()]),
                     file.read())
 
+        Rectangle.save_to_file([Rectangle(1, 2, 0, 0, 98)])
+        saved_content = '[{"id": 98, "width": 1, "height": 2, "x": 0, "y": 0}]'
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), saved_content)
+
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             self.assertTrue(file.read(), "[]")
 
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
-            self.assertTrue(file.read(), "[]")
+            self.assertEqual(file.read(), "[]")
 
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
@@ -105,12 +110,12 @@ class TestBase(unittest.TestCase):
 
         Square.save_to_file([])
         with open("Square.json", "r") as file:
-            self.assertTrue(file.read(), [])
+            self.assertEqual(file.read(), "[]")
 
-        Square.save_to_file([Square(1)])
+        Square.save_to_file([Square(1, 0, 0, 1)])
+        result = '[{"id": 1, "size": 1, "x": 0, "y": 0}]'
         with open("Square.json", "r") as file:
-            result = "[{'id': 1, 'width': 1, 'height': 1, 'x': 0, 'y': 0}]"
-            self.assertTrue(file.read(), result)
+            self.assertEqual(file.read(), result)
 
     def test_from_json_string(self):
         """from_json_string method test"""

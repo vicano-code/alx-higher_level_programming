@@ -7,6 +7,7 @@ and a method that converts list of dictionaries to JSON
 string representation
 """
 import json
+import turtle
 
 
 class Base:
@@ -109,3 +110,14 @@ class Base:
         for my_dict in json_list:
             list_of_instances.append(cls.create(**my_dict))
         return list_of_instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """opens a window and draws all the Rectangles and Squares"""
+        myObj = turtle.Turtle()
+        for sq in list_squares:
+            for _ in range(4):
+                myObj.forward(sq.size)
+                myObj.left(90)
+        myObj.speed(2)
+        turtle.done()
