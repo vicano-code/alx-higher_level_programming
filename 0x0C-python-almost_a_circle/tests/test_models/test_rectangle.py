@@ -78,6 +78,11 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             Rectangle(2, 4, 1, -2)
 
+    def test_height_validate(self):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(1, 0)
+            Rectangle(2, -2, 1, 1)
+
     def test_invalid_args(self):
         """Test invalid args - too many or too little args"""
         with self.assertRaises(TypeError):
