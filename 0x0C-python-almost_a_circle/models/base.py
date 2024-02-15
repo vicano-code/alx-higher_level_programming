@@ -114,10 +114,27 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """opens a window and draws all the Rectangles and Squares"""
-        myObj = turtle.Turtle()
+        turtle.bgcolor("white")
+        turtle.speed(2)
+        t = turtle.Turtle()
+        for rect in list_rectangles:
+            t.penup()
+            t.setpos(rect.x, rect.y)
+            t.color("blue")
+            t.pendown()
+            for _ in range(2):
+                t.forward(rect.width)
+                t.left(90)
+                t.forward(rect.height)
+                t.left(90)
+
         for sq in list_squares:
+            t.penup()
+            t.setpos(sq.x, sq.y)
+            t.color("red")
+            t.pendown()
             for _ in range(4):
-                myObj.forward(sq.size)
-                myObj.left(90)
-        myObj.speed(2)
+                t.forward(sq.size)
+                t.left(90)
+
         turtle.done()
