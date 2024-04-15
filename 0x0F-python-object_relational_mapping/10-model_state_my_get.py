@@ -15,16 +15,16 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-# Create a session maker
-Session = sessionmaker()
-Session.configure(bind=engine)
-session = Session()
+    # Create a session maker
+    Session = sessionmaker()
+    Session.configure(bind=engine)
+    session = Session()
 
-# Query State objects from the database with the name passed as argument
-state = session.query(State).filter(State.name == sys.argv[4]).all()
+    # Query State objects from the database with the name passed as argument
+    state = session.query(State).filter(State.name == sys.argv[4]).all()
 
-# Print
-print(f"{state}")
+    # Print
+    print(f"{state}")
 
-# Close the session
-session.close()
+    # Close the session
+    session.close()

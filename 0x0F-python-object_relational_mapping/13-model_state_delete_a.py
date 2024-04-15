@@ -15,18 +15,18 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-# Create a session maker
-Session = sessionmaker()
-Session.configure(bind=engine)
-session = Session()
+    # Create a session maker
+    Session = sessionmaker()
+    Session.configure(bind=engine)
+    session = Session()
 
-# deletes all State objects with a name containing the letter a
-states = session.query(State).filter(State.name.like('%a%'))
-for state in states.all():
-    session.delete(state)
+    # deletes all State objects with a name containing the letter a
+    states = session.query(State).filter(State.name.like('%a%'))
+    for state in states.all():
+        session.delete(state)
 
-# Commit the session to save the changes to the database
-session.commit()
+    # Commit the session to save the changes to the database
+    session.commit()
 
-# Close the session
-session.close()
+    # Close the session
+    session.close()

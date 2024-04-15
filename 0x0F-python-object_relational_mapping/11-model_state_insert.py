@@ -14,20 +14,20 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-# Create a session maker
-Session = sessionmaker()
-Session.configure(bind=engine)
-session = Session()
+    # Create a session maker
+    Session = sessionmaker()
+    Session.configure(bind=engine)
+    session = Session()
 
-# add row to table
-row = State(name="Louisiana")
-session.add(row)
-session.commit()
+    # add row to table
+    row = State(name="Louisiana")
+    session.add(row)
+    session.commit()
 
-# query
-query = session.query(State).filter(State.name == "Louisiana")
-state = query.first()
-print(f"{state.id}")
+    # query
+    query = session.query(State).filter(State.name == "Louisiana")
+    state = query.first()
+    print(f"{state.id}")
 
-# Close the session
-session.close()
+    # Close the session
+    session.close()

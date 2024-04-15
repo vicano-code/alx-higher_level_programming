@@ -16,15 +16,15 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-# Create a session maker
-Session = sessionmaker()
-Session.configure(bind=engine)
-session = Session()
+    # Create a session maker
+    Session = sessionmaker()
+    Session.configure(bind=engine)
+    session = Session()
 
-# query
-query = session.query(City, State).join(State)
-for city, state in query.all():
-    print(f"{state.name}: ({city.id}) {city.name}")
+    # query
+    query = session.query(City, State).join(State)
+    for city, state in query.all():
+        print(f"{state.name}: ({city.id}) {city.name}")
 
-# Close the session
-session.close()
+    # Close the session
+    session.close()
