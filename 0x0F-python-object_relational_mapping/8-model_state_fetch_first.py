@@ -23,7 +23,8 @@ if __name__ == "__main__":
     state = session.query(State).first()
 
     # Print
-    print(f"{state.id}: {state.name}")
+    if (state):
+        print(f"{state.id}: {state.name}")
 
     # Close the session
     session.close()
