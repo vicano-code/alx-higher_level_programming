@@ -21,11 +21,11 @@ if __name__ == "__main__":
     session = Session()
 
     # Query State objects from the database with the name passed as argument
-    state = session.query(State).filter(State.name == sys.argv[4]).all()
+    state = session.query(State).filter(State.name == sys.argv[4]).first()
 
     # Print
     if state:
-        print("f{state.id}")
+        print("{:d}".format(state.id))
     else:
         print("Not found")
 
