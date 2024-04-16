@@ -20,11 +20,13 @@ if __name__ == "__main__":
     session = Session()
 
     # Query first State object from the database
-    state = session.query(State).first()
+    state = session.query(State).order_by(State.id).first()
 
     # Print
     if (state):
         print(f"{state.id}: {state.name}")
+    else:
+        print("Nothing")
 
     # Close the session
     session.close()
