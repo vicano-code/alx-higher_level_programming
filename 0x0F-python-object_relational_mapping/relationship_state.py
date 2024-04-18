@@ -20,5 +20,5 @@ class State(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
 
-    # Define the relationship with the State class
-    state = relationship("State", back_populates="cities")
+    '''define the relationship with the city class'''
+    cities = relationship("City", backref="state")
