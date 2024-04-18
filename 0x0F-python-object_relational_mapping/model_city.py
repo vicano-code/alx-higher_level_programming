@@ -5,9 +5,10 @@ contains the class definition of a City and an
 instance Base = declarative_base()
 '''
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from model_state import Base
+from sqlalchemy.ext.declarative import declarative_base
+from model_state import Base, State
 
+Base = declarative_base()
 
 class City(Base):
     __tablename__ = 'cities'
