@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-let id = process.argv[2];
-let url = 'https://swapi-api.alx-tools.com/api/films/' + id;
+const id = process.argv[2];
+const url = 'https://swapi-api.alx-tools.com/api/films/' + id;
 const request = require('request');
 request(url, function (err, response, body) {
   if (err) {
@@ -9,19 +9,19 @@ request(url, function (err, response, body) {
     return;
   }
   if (response.statusCode === 200) {
-    let characters = JSON.parse(body).characters;
-    for (let i in characters) {
+    const characters = JSON.parse(body).characters;
+    for (const i in characters) {
       request(characters[i], function (err, response, body) {
         if (err) {
 	  console.log(err);
-	}
-	if (response.statusCode === 200) {
-	  let character = JSON.parse(body).name;
+        }
+        if (response.statusCode === 200) {
+	  const character = JSON.parse(body).name;
 	  console.log(character);
-	}
+        }
       });
     }
   } else {
-      console.log('Error code: ' + response.statusCode);
+    console.log('Error code: ' + response.statusCode);
   }
 });
