@@ -13,11 +13,11 @@ request(url, function (err, response, body) {
     for (const i in characters) {
       request(characters[i], function (err, response, body) {
         if (err) {
-	  console.log(err);
+          console.log(err);
         }
         if (response.statusCode === 200) {
-	  const character = JSON.parse(body).name;
-	  console.log(character);
+          const character = JSON.parse(body).name;
+          console.log(character);
         }
       });
     }
