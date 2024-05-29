@@ -114,9 +114,8 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """opens a window and draws all the Rectangles and Squares"""
-        # Set up the turtle window
-        turtle.speed(2)  # Set the drawing speed (1 to 10, 1 is the slowest)
-        turtle.bgcolor("white")  # Set the background color\
+        turtle.bgcolor("white")
+        turtle.speed(2)
         t = turtle.Turtle()
         for rect in list_rectangles:
             t.penup()
@@ -128,7 +127,7 @@ class Base:
                 t.left(90)
                 t.forward(rect.height)
                 t.left(90)
-        
+
         for sq in list_squares:
             t.penup()
             t.setpos(sq.x, sq.y)
@@ -137,5 +136,5 @@ class Base:
             for _ in range(4):
                 t.forward(sq.size)
                 t.left(90)
-        
+
         turtle.done()
